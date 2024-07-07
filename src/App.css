@@ -1,5 +1,8 @@
 .container {
     font-family: "Noto Sans KR", sans-serif;
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
 .navbar {
@@ -24,6 +27,11 @@
     padding-right: 3%;
     gap: 3%;
     color:rgba(83,117,155,1);
+}
+
+.navbar__login p:hover {
+    font-weight: 700;
+    cursor: pointer;
 }
 
 .navbar__quipu h1 {
