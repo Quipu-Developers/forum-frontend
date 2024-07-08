@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './detail.css';
+import '../style/detail.css';
 
 
 export default function Detail() {

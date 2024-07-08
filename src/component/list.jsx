@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './list.css';
+import '../style/list.css';
 
 export default function List() {
     const [inputValue, setInputValue] = useState('');
@@ -17,8 +17,7 @@ export default function List() {
     };
 
     return (
-        <div className="root">
-            <div className="nav-bar"></div>
+        <div className="list-container">
             <div className='freeboard'>
                 <h1 className='freeboard-title'>자유게시판</h1>
                 <div className='freeboard-header'>
