@@ -31,48 +31,50 @@ function AppComponent() {
   return (
     <div className="container">
 
-        {/* 로그인, 회원가입 모달창 */}
-        {activeLoginModal && <LoginModal />}
-        {activeRegisterModal && <RegisterModal />}
+      {/* 로그인, 회원가입 모달창 */}
+      {activeLoginModal && <LoginModal />}
+      {activeRegisterModal && <RegisterModal />}
 
-        {/* PC 네비게이션 바 */}
-        <nav className="navbar">
-          <div className="navbar__logo">
-            <div className="navbar__login">
-              <p onClick={() => handleActiveLoginModal()}>로그인</p>
-              <p onClick={() => handleActiveRegisterModal()}>회원가입</p>
-            </div>
-            <div className="navbar__quipu">
-              <h1>QUIPU</h1>
-            </div>
+      {/* PC 네비게이션 바 */}
+      <nav className="navbar">
+        <div className="navbar__logo">
+          <div className="navbar__login">
+            <p onClick={() => handleActiveLoginModal()}>로그인</p>
+            <p onClick={() => handleActiveRegisterModal()}>회원가입</p>
           </div>
-
-          <div className="navbar__menu">
-            <ul>
-              <li><Link to="/list"
-                style={{ backgroundColor: isListPage ? 'rgba(249,243,204,1)' : 'white' }}
-              >자유 게시판</Link></li>
-              <li><Link to="/detail"
-                style={{ backgroundColor: isDetailPage ? 'rgba(249,243,204,1)' : 'white' }}
-              >정보 게시판</Link></li>
-              <li><Link to="/write"
-                style={{ backgroundColor: isWritePage ? 'rgba(249,243,204,1)' : 'white' }}
-              >코딩 게시판</Link></li>
-              <div className="navbar__menu--gallery">
-                <li><Link to="/gallery"
-                  style={{ backgroundColor: isGalleryPage ? 'rgba(249,243,204,1)' : 'white' }}>갤러리</Link></li>
-              </div>
-            </ul>
+          <div className="navbar__quipu">
+            <h1>QUIPU</h1>
           </div>
-        </nav>
+        </div>
 
-        {/* 라우팅 */}
+        <div className="navbar__menu">
+          <ul>
+            <li><Link to="/list"
+              style={{ backgroundColor: isListPage ? 'rgba(249,243,204,1)' : 'white' }}
+            >자유 게시판</Link></li>
+            <li><Link to="/detail"
+              style={{ backgroundColor: isDetailPage ? 'rgba(249,243,204,1)' : 'white' }}
+            >정보 게시판</Link></li>
+            <li><Link to="/write"
+              style={{ backgroundColor: isWritePage ? 'rgba(249,243,204,1)' : 'white' }}
+            >코딩 게시판</Link></li>
+            <div className="navbar__menu--gallery">
+              <li><Link to="/gallery"
+                style={{ backgroundColor: isGalleryPage ? 'rgba(249,243,204,1)' : 'white' }}>갤러리</Link></li>
+            </div>
+          </ul>
+        </div>
+      </nav>
+
+      {/* 라우팅 */}
+      <div className="content-container">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/list" element={<List />} />
           <Route path="/detail" element={<Detail />} />
           <Route path="/write" element={<Write />} />
         </Routes>
+      </div>
 
     </div>
   );
