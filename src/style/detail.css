@@ -1,0 +1,17 @@
+.root {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+}
+
+.full-detail {
+padding-top: 270px; /* 네비게이션 바 높이만큼 패딩 추가 */
+height: auto;
+display: flex;
+flex-direction: column;
+height: auto;
+}
+
+

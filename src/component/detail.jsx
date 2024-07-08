@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './detail.css';
+import '../style/detail.css';
 
 
 export default function Detail() {
@@ -13,44 +13,47 @@ export default function Detail() {
 
 
     return (
-        <div className="full-detail">
-            <h2 className='ListTitle'>자유(정보)게시판</h2>
-            <div className="Container"></div>
-
-            <div className='commentarea'>
-                <div className='input-container'>
-                    <input onChange={(e)=>{setcommentinput(e.target.value);}} value={commentinput} placeholder="댓글을 입력하세요.."/>
-                    <button onClick={(e)=>{
-                        if (commentinput.trim() === '') {
-                        alert("댓글을 입력하세요.");
-                        } else {
-                        let copycomment = [...comment];
-                        let copycommentwriter = [...commentwriter];
-                        copycomment.unshift(commentinput);
-                        copycommentwriter.unshift(0); //새 작성자 추가??
-                        setcomment(copycomment);
-                        setcommentwriter(copycommentwriter);
-                        setcommentinput('');
-                        }
-                    }}>📝</button>
-                <div className='comment-container'></div>
-                    {
-                    comment.map((element, count) => (
-                    <Comment commentwriter={commentwriter} setcommentwriter={setcommentwriter}
-                        comment={comment} setcomment={setcomment} />
-                    ))
-                }
+        <div className='root'>
+            <div className="navbar"></div>
+            <div className='full-detail'>
+                <h2 className='ListTitle'>자유(정보)게시판</h2>
+                <div className="Container"></div>
+                    <p>글 내용</p>
+                <div className='commentarea'>
+                    <div className='input-container'>
+                        <input onChange={(e)=>{setcommentinput(e.target.value);}} value={commentinput} placeholder="댓글을 입력하세요.."/>
+                        <button onClick={(e)=>{
+                            if (commentinput.trim() === '') {
+                            alert("댓글을 입력하세요.");
+                            } else {
+                            let copycomment = [...comment];
+                            let copycommentwriter = [...commentwriter];
+                            copycomment.unshift(commentinput);
+                            copycommentwriter.unshift(0); //새 작성자 추가??
+                            setcomment(copycomment);
+                            setcommentwriter(copycommentwriter);
+                            setcommentinput('');
+                            }
+                        }}>📝</button>
+                    <div className='comment-container'></div>
+                        {
+                        comment.map((element, count) => (
+                        <Comment key={count} index={count} commentwriter={commentwriter} setcommentwriter={setcommentwriter}
+                            comment={comment} setcomment={setcomment} />
+                        ))
+                    }
+                    </div>
                 </div>
             </div>
-        </div>
+    </div>
     );
 }
 
 function Comment(props) {
     return (
         <div className="commentbody">
-            <h4>{props.commentwriter}</h4>
-            <h5>{props.comment}</h5>
+            <h4>{props.commentwriter[props.index]}</h4>
+            <h5>{props.comment[props.index]}</h5>
         </div>
     );
 }
