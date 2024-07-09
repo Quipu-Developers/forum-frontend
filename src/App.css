@@ -44,18 +44,26 @@
     cursor: pointer;
 }
 
-.navbar__quipu h1 {
+.navbar__quipu {
+    text-align: center;
+}
+
+.navbar__quipu a{
+    display: inline-block;
+    text-decoration: none;
+    max-width: 30%;
+    margin: 30px auto 50px auto;
+
     text-align: center;
     font-family: "Kreon", serif;
     font-weight: 900;
     font-size: 80px;
     line-height: 75.6px;
-    margin-top: 40px;
-    margin-bottom: 50px;
     color: rgba(83,117,155,1);
     -webkit-text-stroke: 1.5px whitesmoke;
     text-shadow: 4px 1px 4.4px rgba(0, 0, 0, 0.25);
 }
+
 
 .navbar__menu {
     background-image: 
@@ -82,6 +90,7 @@
 
     position: relative;
     right: 15px;
+    bottom: 15%;
 }
 
 .navbar__menu li a {
