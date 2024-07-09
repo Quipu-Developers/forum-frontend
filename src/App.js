@@ -43,7 +43,7 @@ function AppComponent() {
             <p onClick={() => handleActiveRegisterModal()}>회원가입</p>
           </div>
           <div className="navbar__quipu">
-            <h1>QUIPU</h1>
+            <Link to="/">QUIPU</Link>            
           </div>
         </div>
 
