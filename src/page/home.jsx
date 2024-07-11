@@ -12,6 +12,9 @@ export default function Home() {
                 <div className="home-row2">
                     <HomeGallery />
                 </div>
+                <div className="home-row3">
+                    <HomeGallery />
+                </div>
             </div>
         </div>
     )
@@ -67,7 +70,7 @@ function HomeGallery() {
                 <div className="home__gallery-title-icon">
                     <p>●</p>
                     <p>●</p>
-                    <p>●</p>                   
+                    <p>●</p>
                 </div>
             </div>
             <div className="home__gallery-list">
@@ -75,25 +78,25 @@ function HomeGallery() {
                     <div className="home__gallery-list-imgcontainer">
                         <img />
                     </div>
-                    <p style={{marginTop:'10px'}}>제목</p>
+                    <p style={{ marginTop: '10px' }}>제목</p>
                 </div>
                 <div className="home__gallery-list-container">
                     <div className="home__gallery-list-imgcontainer">
                         <img />
                     </div>
-                    <p style={{marginTop:'10px'}}>제목</p>
+                    <p style={{ marginTop: '10px' }}>제목</p>
                 </div>
                 <div className="home__gallery-list-container">
                     <div className="home__gallery-list-imgcontainer">
                         <img />
                     </div>
-                    <p style={{marginTop:'10px'}}>제목</p>
+                    <p style={{ marginTop: '10px' }}>제목</p>
                 </div>
                 <div className="home__gallery-list-container">
                     <div className="home__gallery-list-imgcontainer">
                         <img />
                     </div>
-                    <p style={{marginTop:'10px'}}>제목</p>
+                    <p style={{ marginTop: '10px' }}>제목</p>
                 </div>
             </div>
         </div>
