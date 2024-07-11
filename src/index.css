@@ -5,10 +5,23 @@ html {
   padding: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden; 
+  font-family: 'GmarketSansMedium';
 }
 
 div,
 input,
 textarea {
   box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+}
+
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }

@@ -16,24 +16,31 @@ export default function List() {
         }
     };
 
+    const handleWhite = () => {
+        
+    }
+
     return (
         <div className="list-container">
             <div className='freeboard'>
                 <h1 className='freeboard-title'>자유게시판</h1>
                 <div className='freeboard-header'>
-                    <input
-                        className='search-box'
-                        placeholder='검색어를 입력하세요'
-                        value={inputValue}
-                        onChange={handleInputChange}
-                    />
-                    <button className='add-button' onClick={handleAddToList}>추가</button>
-                    <button className='write-botton'>글쓰기✍️</button>
+                    <div className='search-container'>
+                        <input
+                            className='search-box'
+                            placeholder='검색어를 입력하세요'
+                            value={inputValue}
+                            onChange={handleInputChange}
+                        />
+                        <button className='add-button' onClick={handleAddToList}>✅</button>
+                    </div>
+                    <button className='write-botton' onClick={handleWhite}>글쓰기✍️</button>
                 </div>
                 <div className='freeboard-body'>
                     {list.map((item, index) => (
                         <div key={index} className='Listcomponent'>
                             {item}
+                            <div>작성자 2024.6.28</div>
                         </div>
                     ))}
                 </div>
