@@ -11,7 +11,7 @@
 
 /*최근 게시글*/
 
-.home__recent{
+.home__recent {
     display: inline-flex;
     flex-direction: column;
     width: 29%;
@@ -25,8 +25,8 @@
     justify-content: space-between;
 }
 
-.home__recent-title h4{
-    font-size: 25px;    
+.home__recent-title h4 {
+    font-size: 25px;
     margin: 25px 0 0 5%;
 }
 
@@ -56,18 +56,20 @@
     height: 80%;
 }
 
-.home__recent-list span{
+.home__recent-list span {
     color: rgb(22, 197, 186);
     margin-right: 5px;
 }
 
-.home__recent-list p, .home__notice-list p {
+.home__recent-list p,
+.home__notice-list p {
     width: fit-content;
     cursor: pointer;
     height: 17%;
 }
 
-.home__recent-list p:hover, .home__notice-list p:hover{
+.home__recent-list p:hover,
+.home__notice-list p:hover {
     transform: translateY(-5px);
 }
 
@@ -100,7 +102,7 @@
     width: 10%;
 }
 
-.home__notice-title-icon p { 
+.home__notice-title-icon p {
     cursor: pointer;
     font-size: 10px;
     margin: 3px;
@@ -118,8 +120,8 @@
     height: 80%;
 }
 
-.home__notice-list span{
-    color: rgb(244,68,68);
+.home__notice-list span {
+    color: rgb(244, 68, 68);
     margin-right: 5px;
 }
 
@@ -130,7 +132,7 @@
     flex-direction: column;
     width: 58%;
     height: 30vh;
-    border: 1px solid rgb(142,172,205);
+    border: 1px solid rgb(142, 172, 205);
     margin-left: 5%;
 }
 
@@ -139,7 +141,7 @@
     justify-content: space-between;
 }
 
-.home__gallery-title h4{
+.home__gallery-title h4 {
     font-size: 25px;
     margin: 25px 0 0 2.5%;
 }
@@ -152,7 +154,7 @@
     width: 10%;
 }
 
-.home__gallery-title-icon p { 
+.home__gallery-title-icon p {
     cursor: pointer;
     font-size: 10px;
     margin: 3px;
@@ -167,7 +169,7 @@
 .home__gallery-list {
     display: flex;
     flex-direction: row;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
     height: 80%;
     margin-top: 25px;
 }
@@ -179,7 +181,8 @@
     font-size: 20px;
 }
 
-.home__gallery-list-container p, .home__gallery-list-imgcontainer{
+.home__gallery-list-container p,
+.home__gallery-list-imgcontainer {
     cursor: pointer;
 }
 
@@ -192,9 +195,3 @@
     border: 1px solid rgb(142, 172, 205);
     border-radius: 12px;
 }
-
-
-
-
-
-
