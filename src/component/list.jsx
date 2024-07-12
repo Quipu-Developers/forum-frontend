@@ -32,9 +32,9 @@ export default function List() {
                             value={inputValue}
                             onChange={handleInputChange}
                         />
-                        <button className='add-button' onClick={handleAddToList}>✅</button>
+                        <button className='add-button' onClick={handleAddToList}></button>
                     </div>
-                    <button className='write-botton' onClick={handleWhite}>글쓰기✍️</button>
+                    <button className='write-botton' onClick={handleWhite}>글쓰기<div className='write-button-image'/></button>
                 </div>
                 <div className='freeboard-body'>
                     {list.map((item, index) => (
