@@ -9,6 +9,14 @@ export default function List() {
         setInputValue(event.target.value);
     };
 
+    const activeEnter = (event) => {
+        if(event.key === 'Enter'){ 
+        setInputValue(event.target.value);
+        handleAddToList();
+        }
+
+    }
+
     const handleAddToList = () => {
         if (inputValue.trim()) {
             setList([...list, inputValue]);
@@ -31,6 +39,7 @@ export default function List() {
                             placeholder='검색어를 입력하세요'
                             value={inputValue}
                             onChange={handleInputChange}
+                            onKeyDown={activeEnter}
                         />
                         <button className='add-button' onClick={handleAddToList}></button>
                     </div>
