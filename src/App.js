@@ -20,6 +20,15 @@ function AppComponent() {
     setActiveRegisterModal(!activeRegisterModal);
   }
 
+  const handleLoginClose = () => {
+    setActiveLoginModal(false);
+  }
+
+  const handleRegisterClose = () => {
+    setActiveRegisterModal(false);
+  }
+
+
   // 현재 경로 일치여부
   const location = useLocation();
   const isListPage = location.pathname === '/list';
@@ -32,8 +41,8 @@ function AppComponent() {
     <div className="container">
 
       {/* 로그인, 회원가입 모달창 */}
-      {activeLoginModal && <LoginModal />}
-      {activeRegisterModal && <RegisterModal />}
+      {activeLoginModal && <LoginModal handleLoginClose={handleLoginClose} />}
+      {activeRegisterModal && <RegisterModal handleRegisterClose={handleRegisterClose} />}
 
       {/* PC 네비게이션 바 */}
       <nav className="navbar">
