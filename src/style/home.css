@@ -1,12 +1,16 @@
-.home-row1 {
+.home-main-row1 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-top: 2vh;
 }
 
-.home-row2 {
+.home-main-row2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     margin-top: 5vh;
+    height: fit-content;
 }
 
 /*최근 게시글*/
@@ -15,9 +19,14 @@
     display: inline-flex;
     flex-direction: column;
     width: 29%;
-    height: 33vh;
+    height: fit-content;
     border: 1px solid rgb(142, 172, 205);
     margin-left: 5%;
+    font-size: 2.5vw;
+
+    @media (min-width:1000px) {
+        font-size: 1.5vw;
+    }
 }
 
 .home__recent-title {
@@ -26,8 +35,8 @@
 }
 
 .home__recent-title h4 {
-    font-size: 25px;
-    margin: 25px 0 0 5%;
+    font-size: 0.9em;
+    margin: 0.75em 0 0 5%;
 }
 
 .home__recent-title-icon {
@@ -35,13 +44,13 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 20%;
+    margin: 0.6em 5% 0 0;
 }
 
 .home__recent-title-icon p {
     cursor: pointer;
     font-size: 10px;
-    margin: 3px;
+    margin: 0.5em;
     color: rgb(210, 224, 251);
 }
 
@@ -50,10 +59,9 @@
 }
 
 .home__recent-list {
-    font-size: 20px;
+    font-size: 0.75em;
     margin-bottom: 25px;
-    margin-left: 7%;
-    height: 80%;
+    margin: 0.75em auto 0.75em 7%;
 }
 
 .home__recent-list span {
@@ -65,7 +73,6 @@
 .home__notice-list p {
     width: fit-content;
     cursor: pointer;
-    height: 17%;
 }
 
 .home__recent-list p:hover,
@@ -79,9 +86,14 @@
     display: inline-flex;
     flex-direction: column;
     width: 58%;
-    height: 33vh;
+    height: auto;
     border: 1px solid rgb(142, 172, 205);
     margin-right: 5%;
+    font-size: 2.5vw;
+
+    @media (min-width:1000px) {
+        font-size: 1.5vw;
+    }
 }
 
 .home__notice-title {
@@ -90,8 +102,8 @@
 }
 
 .home__notice-title h4 {
-    font-size: 25px;
-    margin: 25px 0 0 2.5%;
+    font-size: 0.9em;
+    margin: 0.75em 0 0 2.5%;
 }
 
 .home__notice-title-icon {
@@ -99,13 +111,13 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 10%;
+    margin: 0.6em 2.5% 0 0;
 }
 
 .home__notice-title-icon p {
     cursor: pointer;
     font-size: 10px;
-    margin: 3px;
+    margin: 0.5em;
     color: rgb(210, 224, 251);
 }
 
@@ -114,10 +126,8 @@
 }
 
 .home__notice-list {
-    font-size: 20px;
-    margin-bottom: 25px;
-    margin-left: 3.5%;
-    height: 80%;
+    font-size: 0.75em;
+    margin: 0.75em auto 0.75em 3.5%;
 }
 
 .home__notice-list span {
@@ -131,9 +141,14 @@
     display: inline-flex;
     flex-direction: column;
     width: 58%;
-    height: 30vh;
+    height: 25vw;
     border: 1px solid rgb(142, 172, 205);
     margin-left: 5%;
+    font-size: 2.5vw;
+
+    @media (min-width:1000px) {
+        font-size: 1.5vw;
+    }
 }
 
 .home__gallery-title {
@@ -142,8 +157,8 @@
 }
 
 .home__gallery-title h4 {
-    font-size: 25px;
-    margin: 25px 0 0 2.5%;
+    font-size: 0.9em;
+    margin: 0.75em 0 0 2.5%;
 }
 
 .home__gallery-title-icon {
@@ -151,16 +166,15 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 10%;
+    margin: 0.6em 2.5% 0 0;
 }
 
 .home__gallery-title-icon p {
     cursor: pointer;
     font-size: 10px;
-    margin: 3px;
+    margin: 0.5em;
     color: rgb(210, 224, 251);
 }
-
 
 .home__gallery-title-icon p:hover {
     color: black;
@@ -170,20 +184,23 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    height: 80%;
-    margin-top: 25px;
+    margin: 0.75em 3.5% 0.75em 3.5%;
+    height: 100%;
 }
 
 .home__gallery-list-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
     width: 20%;
     height: 100%;
-    font-size: 20px;
 }
 
 .home__gallery-list-container p,
 .home__gallery-list-imgcontainer {
     cursor: pointer;
+    font-size: 0.75em;
 }
 
 .home__gallery-list-imgcontainer:hover {
@@ -194,4 +211,101 @@
     height: 70%;
     border: 1px solid rgb(142, 172, 205);
     border-radius: 12px;
+}
+
+/* 자주 묻는 질문 */
+
+.home__FAQ {
+    display: inline-flex;
+    flex-direction: column;
+    width: 29%;
+    height: 25vw;
+    border: 1px solid rgb(142, 172, 205);
+    margin-right: 5%;
+    font-size: 2.5vw;
+
+    @media (min-width:1000px) {
+        font-size: 1.5vw;
+    }
+}
+
+.home__FAQ-title {
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.home__FAQ-title h4 {
+    font-size: 0.9em;
+    margin: 0.75em 0 0 5%;
+}
+
+.home__FAQ-title-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0.6em 5% 0 0;
+}
+
+.home__FAQ-title-icon p {
+    cursor: pointer;
+    font-size: 10px;
+    margin: 0.5em;
+    color: rgb(210, 224, 251);
+}
+
+.home__FAQ-title-icon p:hover {
+    color: black;
+}
+
+.home__FAQ-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    height: 100%;
+    margin: 0.75em auto 0.75em 7%;
+}
+
+.home__FAQ-list span {
+    color: rgb(249, 243, 204);
+    margin-right: 5px;
+}
+
+.home__FAQ-list p {
+    margin-block: auto;
+    font-size: 0.75em;
+    cursor: pointer;
+}
+
+.home__FAQ-list p:hover {
+    transform: translateY(-5px);
+}
+
+/* 푸터 */
+
+.home-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    border-top: 1.5px solid rgb(142, 172, 205);
+    padding: 7vh;
+    margin-top: 20vh;
+}
+
+.home-footer-content {
+    text-align: center;
+    font-size: 0.8em;
+    color: rgb(142, 172, 205);
+}
+
+.home-footer-content a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.home-footer-content a:hover {
+    color: rgb(75, 99, 164);
 }

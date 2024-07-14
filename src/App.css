@@ -50,7 +50,6 @@
 .navbar__quipu a {
     display: inline-block;
     text-decoration: none;
-    max-width: 30%;
     margin: 30px auto 50px auto;
 
     text-align: center;
