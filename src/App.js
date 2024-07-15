@@ -20,6 +20,15 @@ function AppComponent() {
     setActiveRegisterModal(!activeRegisterModal);
   }
 
+  const handleLoginClose = () => {
+    setActiveLoginModal(false);
+  }
+
+  const handleRegisterClose = () => {
+    setActiveRegisterModal(false);
+  }
+
+
   // 현재 경로 일치여부
   const location = useLocation();
   const isListPage = location.pathname === '/list';
@@ -32,8 +41,8 @@ function AppComponent() {
     <div className="container">
 
       {/* 로그인, 회원가입 모달창 */}
-      {activeLoginModal && <LoginModal />}
-      {activeRegisterModal && <RegisterModal />}
+      {activeLoginModal && <LoginModal handleLoginClose={handleLoginClose} />}
+      {activeRegisterModal && <RegisterModal handleRegisterClose={handleRegisterClose} />}
 
       {/* PC 네비게이션 바 */}
       <nav className="navbar">
@@ -43,7 +52,7 @@ function AppComponent() {
             <p onClick={() => handleActiveRegisterModal()}>회원가입</p>
           </div>
           <div className="navbar__quipu">
-            <Link to="/">QUIPU</Link>            
+            <Link to="/">QUIPU</Link>
           </div>
         </div>
 
@@ -53,14 +62,14 @@ function AppComponent() {
               style={{ backgroundColor: isListPage ? 'rgba(249,243,204,1)' : 'white' }}
             >자유 게시판</Link></li>
             <li><Link to="/detail"
-              style={{ backgroundColor: isDetailPage ? 'rgba(249,243,204,1)' : 'white' }}
+              style={{ borderLeft: 'none', backgroundColor: isDetailPage ? 'rgba(249,243,204,1)' : 'white' }}
             >정보 게시판</Link></li>
             <li><Link to="/write"
-              style={{ backgroundColor: isWritePage ? 'rgba(249,243,204,1)' : 'white' }}
+              style={{ borderLeft: 'none', backgroundColor: isWritePage ? 'rgba(249,243,204,1)' : 'white' }}
             >코딩 게시판</Link></li>
             <div className="navbar__menu--gallery">
               <li><Link to="/gallery"
-                style={{ backgroundColor: isGalleryPage ? 'rgba(249,243,204,1)' : 'white' }}>갤러리</Link></li>
+                style={{ borderLeft: 'none', backgroundColor: isGalleryPage ? 'rgba(249,243,204,1)' : 'white' }}>갤러리</Link></li>
             </div>
           </ul>
         </div>

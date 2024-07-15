@@ -47,19 +47,33 @@
 }
 
 .add-button{
+    padding: 1px;
+    width: 4%;
+    height: 100%;
     border: 0px;
     background: #E8F0FFEE;
     cursor: pointer;
-
+    background-image: url('../image/search.png');
+    background-size: cover;
 }
 
 .write-botton {
+    padding-left: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between ;
     background-color: #F9F3CC;
-    width: 10%;
+    width: 13%;
     border-radius: 8px;
-    border: 2px solid #8EACCD
-    
+    border: 2px solid #8EACCD;
+    font-size: 20px;
 
+}
+.write-button-image{
+    width: 27%;
+    height: 100%;
+    background-image: url('../image/write.png');
+    background-size: cover;
 }
 
 .freeboard-body {
