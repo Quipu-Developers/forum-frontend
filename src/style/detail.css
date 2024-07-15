@@ -5,8 +5,6 @@
   justify-content: center;
   align-items: center;
   height: auto;
-  justify-content: center;
-  align-items: center;
 }
 
 .full-detail {
@@ -14,6 +12,7 @@
   width: 1078px;
   display: flex;
   flex-direction: column;
+  
 }
 
 .ListTitle{
@@ -21,17 +20,16 @@
   font-weight: bold;
   line-height: 37.65px;
   color: #4E6B8B;
-  padding-left: 9%;
 }
 
 .Container{
   width: 100%;
   display: flex;
   border: 1.4px solid #53759B;
-  margin-left: 100px;
   margin-bottom:3%;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 }
 
 .Header{
