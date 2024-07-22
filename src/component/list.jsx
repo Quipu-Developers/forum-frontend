@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import '../style/list.css';
+import Pagination from './pagination';
 
 export default function List() {
     const [inputValue, setInputValue] = useState('');
     const [list, setList] = useState(['제목1', '제목2', '제목3']);
+    const [pageCount, setPageCount] = useState(3); // 페이지 수 설정
+    const [currentPage, setCurrentPage] = useState(0); // 현재 페이지 설정
 
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
     };
 
     const activeEnter = (event) => {
-        if(event.key === 'Enter'){ 
-        setInputValue(event.target.value);
-        handleAddToList();
+        if (event.key === 'Enter') {
+            setInputValue(event.target.value);
+            handleAddToList();
         }
 
     }
@@ -25,8 +28,12 @@ export default function List() {
     };
 
     const handleWhite = () => {
-        
+
     }
+    const handlePageChange = ({ selected }) => {
+        setCurrentPage(selected);
+        // 페이지 변경 시 필요한 로직 추가
+    };
 
     return (
         <div className="list-container">
@@ -43,7 +50,7 @@ export default function List() {
                         />
                         <button className='add-button' onClick={handleAddToList}></button>
                     </div>
-                    <button className='write-botton' onClick={handleWhite}>글쓰기<div className='write-button-image'/></button>
+                    <button className='write-botton' onClick={handleWhite}>글쓰기<div className='write-button-image' /></button>
                 </div>
                 <div className='freeboard-body'>
                     {list.map((item, index) => (
@@ -52,6 +59,15 @@ export default function List() {
                             <div>작성자 2024.6.28</div>
                         </div>
                     ))}
+                    <div className='page-naviation'>
+                        {pageCount > 0 && (
+                            <Pagination
+                                pageCount={Math.max(1, pageCount - 1)}
+                                onPageChange={handlePageChange}
+                                currentPage={currentPage}
+                            />
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
