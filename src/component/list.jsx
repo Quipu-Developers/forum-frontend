@@ -59,13 +59,15 @@ export default function List() {
                             <div>작성자 2024.6.28</div>
                         </div>
                     ))}
-                    {pageCount > 0 && (
-                        <Pagination
-                            pageCount={Math.max(1, pageCount - 1)}
-                            onPageChange={handlePageChange}
-                            currentPage={currentPage}
-                        />
-                    )}
+                    <div className='page-naviation'>
+                        {pageCount > 0 && (
+                            <Pagination
+                                pageCount={Math.max(1, pageCount - 1)}
+                                onPageChange={handlePageChange}
+                                currentPage={currentPage}
+                            />
+                        )}
+                    </div>
                 </div>
             </div>
         </div>

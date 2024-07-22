@@ -99,3 +99,11 @@
     height: 48px;
     color: #53759B;
 }
+
+.page-naviation{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+}
