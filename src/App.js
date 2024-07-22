@@ -2,9 +2,19 @@ import './App.css';
 import { React, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
 import Home from './page/home';
-import List from './component/list';
-import Detail from './component/detail';
-import Write from './component/write';
+import FreeList from './page/freeboard/list';
+import InfoList from './page/infoboard/list';
+import CodingList from './page/codingboard/list';
+import GalleryList from './page/gallery/list';
+import FreeDetail from './page/freeboard/detail';
+import InfoDetail from './page/infoboard/detail';
+import CodingDetail from './page/codingboard/detail';
+import FreeWrite from './page/freeboard/write';
+import InfoWrite from './page/infoboard/write';
+import CodingWrite from './page/codingboard/write';
+import GalleryWrite from './page/gallery/write';
+
+
 import { LoginModal, RegisterModal } from './component/loginModal';
 
 function AppComponent() {
@@ -31,9 +41,9 @@ function AppComponent() {
 
   // 현재 경로 일치여부
   const location = useLocation();
-  const isListPage = location.pathname === '/list';
-  const isDetailPage = location.pathname === '/detail';
-  const isWritePage = location.pathname === '/write';
+  const isFreePage = location.pathname === '/free';
+  const isInfoPage = location.pathname === '/info';
+  const isCodingPage = location.pathname === '/coding';
   const isGalleryPage = location.pathname === '/gallery';
 
 
@@ -58,14 +68,14 @@ function AppComponent() {
 
         <div className="navbar__menu">
           <ul>
-            <li><Link to="/list"
-              style={{ backgroundColor: isListPage ? 'rgba(249,243,204,1)' : 'white' }}
+            <li><Link to="/free"
+              style={{ backgroundColor: isFreePage ? 'rgba(249,243,204,1)' : 'white' }}
             >자유 게시판</Link></li>
-            <li><Link to="/detail"
-              style={{ borderLeft: 'none', backgroundColor: isDetailPage ? 'rgba(249,243,204,1)' : 'white' }}
+            <li><Link to="/info"
+              style={{ borderLeft: 'none', backgroundColor: isInfoPage ? 'rgba(249,243,204,1)' : 'white' }}
             >정보 게시판</Link></li>
-            <li><Link to="/write"
-              style={{ borderLeft: 'none', backgroundColor: isWritePage ? 'rgba(249,243,204,1)' : 'white' }}
+            <li><Link to="/coding"
+              style={{ borderLeft: 'none', backgroundColor: isCodingPage ? 'rgba(249,243,204,1)' : 'white' }}
             >코딩 게시판</Link></li>
             <div className="navbar__menu--gallery">
               <li><Link to="/gallery"
@@ -78,10 +88,22 @@ function AppComponent() {
       {/* 라우팅 */}
       <div className="content-container">
         <Routes>
+          {/* 홈페이지 */}
           <Route path="/" element={<Home />} />
-          <Route path="/list" element={<List />} />
-          <Route path="/detail" element={<Detail />} />
-          <Route path="/write" element={<Write />} />
+          {/* 게시판 리스트 페이지 */}
+          <Route path="/free" element={<FreeList />} />
+          <Route path="/info" element={<InfoList />} />
+          <Route path="/coding" element={<CodingList />} />
+          <Route path="/gallery" element={<GalleryList />} />
+          {/* 게시판 디테일 페이지 */}
+          <Route path="/free/detail" element={<FreeDetail />} />
+          <Route path="/info/detail" element={<InfoDetail />} />
+          <Route path="/coding/detail" element={<CodingDetail />} />
+          {/* 게시판 글쓰기 페이지 */}
+          <Route path="/free/write" element={<FreeWrite />} />
+          <Route path="/info/write" element={<InfoWrite />} />
+          <Route path="/coding/write" element={<CodingWrite />} />
+          <Route path="/gallery/write" element={<GalleryWrite />} />
         </Routes>
       </div>
 

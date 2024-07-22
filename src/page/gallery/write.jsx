@@ -1,6 +1,6 @@
 import Write from '../../component/write';
 
-export default function FreeWrite() {
+export default function GalleryWrite() {
     return (
         <Write />
     )
