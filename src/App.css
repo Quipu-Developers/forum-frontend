@@ -93,28 +93,9 @@
     border: 1px solid rgba(83, 117, 155, 1);
     text-decoration: none;
     color: rgba(47, 78, 113, 1);
-    margin: 0 auto;
-    padding-left: 35px;
-    padding-right: 35px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-
-    @media (max-width: 690px) {
-        padding-left: 2px;
-        padding-right: 2px;
-    }
+    padding: 5px 5px 5px 5px;
 }
 
-.navbar__menu--gallery li a {
-    padding-left: 54px;
-    padding-right: 54px;
-
-    @media (max-width: 690px) {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-}
-
-.navbar__menu li a:hover {
-    font-weight: 900;
+.navbar__menu li a {
+    font-size: 0.8em;
 }
