@@ -1,6 +1,6 @@
 .login-modal {
     width: 90%;
-    height: 50%;
+    height: 60%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -21,17 +21,18 @@
 }
 
 .login-modal h2 {
-    font-size: 5vh;
+    font-size: 7vh;
     margin: 20px;
 }
 
 .login-modal input {
     width: 100%;
-    height: 5vh;
-    margin: 5px;
+    height: 4vh;
+    margin: 0.5%;
     border-radius: 20px;
     border: 1px solid lightgrey;
-    padding: 10px;
+    padding: 2.5%;
+    font-size: 50%;
 }
 
 .login-modal input::placeholder {
@@ -40,20 +41,20 @@
 
 .login-modal button {
     width: 100%;
-    height: 5vh;
-    margin: 10px;
-    padding: 5px;
+    height: 7vh;
+    margin: 1vh;
+    padding: 1vh;
     border-radius: 20px;
     border: none;
     background-color: rgba(83, 117, 155, 1);
     color: white;
-    font-size: 2.5vh;
+    font-size: 70%;
     box-shadow: 0 0 2px grey;
 
 }
 
 .login-modal h6 {
-    font-size: 1.8vh;
+    font-size: 2vh;
     cursor: pointer;
     text-decoration: underline;
 }
@@ -89,11 +90,11 @@
 
 .register-left img {
     width: 60%;
-    margin: 20px;
+    margin: 0.1vh;
 }
 
 .register-left p {
-    font-size: 100%;
+    font-size: 3vh;
     text-align: center;
     line-height: 1.5;
     word-break: keep-all;
@@ -120,7 +121,7 @@
 
 .register-input-box {
     width: 80%;
-    height: 5%;
+    height: 5vh;
     margin: 20px;
 }
 
@@ -132,7 +133,7 @@
 
 .register-right input {
     width: 100%;
-    height: 30px;
+    height: 4vh;
     text-align: center;
     border: 1px solid lightgrey;
     border-radius: 10px;
@@ -140,11 +141,12 @@
 
 .register-right button {
     width: 80%;
-    font-size: 1.5vh;
+    height: auto;
+    font-size: 80%;
     background-color: rgba(83, 117, 155, 1);
     color: white;
     border: none;
-    padding: 3% 40px;
+    padding: 2% 40px;
     border-radius: 10px;
     margin: 20px;
 }
