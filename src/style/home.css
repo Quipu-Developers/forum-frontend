@@ -284,16 +284,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: fixed;
     width: 100%;
     height: auto;
     border-top: 1.5px solid rgb(142, 172, 205);
-    padding: 7vh;
-    margin-top: 20vh;
+    padding: 10px 0px 10px 0;
+    bottom: 2px;
 }
 
 .home-footer-content {
     text-align: center;
-    font-size: 0.8em;
+    font-size: 0.1em;
     color: rgb(142, 172, 205);
 }
 
@@ -304,8 +305,4 @@
 
 .home-footer-content a:hover {
     color: rgb(75, 99, 164);
-}
-
-@media (max-width: 768px){
-    
 }
