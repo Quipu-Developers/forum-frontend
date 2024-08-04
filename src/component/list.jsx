@@ -7,7 +7,6 @@ export default function List() {
     const [index, setIndex] = useState(0);
     const [inputValue, setInputValue] = useState('');
     const [list, setList] = useState(['제목1', '제목2', '제목3']);
-    
     const [pageCount, setPageCount] = useState(3); // 페이지 수 설정
     const [currentPage, setCurrentPage] = useState(0); // 현재 페이지 설정
 

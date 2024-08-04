@@ -1,23 +1,23 @@
-interface PostFile {
-    file_name: string;
-    file_size: number;
-    file_type: string;
-    file_url: string;
-}
+// interface PostFile {
+//     file_name: string;
+//     file_size: number;
+//     file_type: string;
+//     file_url: string;
+// }
 
-interface BoardPost {
-    post_id: Number;
-    board_type: String;
-    user_name: String;
-    user_id: Number;
-    title: String;
-    order: Number; //post_time으로 대체할 수 있지 않을까?
-    file: PostFile[] | null;
-    post_time: String;
-    edit_time?: String; //수정 시간 필요하지 않을까?
-}
+// interface BoardPost {
+//     post_id: Number;
+//     board_type: String;
+//     user_name: String;
+//     user_id: Number;
+//     title: String;
+//     order: Number; //post_time으로 대체할 수 있지 않을까?
+//     file: PostFile[] | null;
+//     post_time: String;
+//     edit_time?: String; //수정 시간 필요하지 않을까?
+// }
 
-export const board_content_data: BoardPost[] = 
+export const board_post_data = 
 [
     {
         post_id: 1,
