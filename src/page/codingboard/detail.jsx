@@ -1,6 +1,6 @@
 import Detail from '../../component/detail';
 
-export default function FreeDetail() {
+export default function CodingDetail() {
     return (
         <Detail />
     )

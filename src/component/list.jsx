@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import '../style/list.css';
 import Pagination from './pagination';
+import {board_content_data} from '../data/board_post_data.tsx';
 
 export default function List() {
+    const [index, setIndex] = useState(0);
     const [inputValue, setInputValue] = useState('');
     const [list, setList] = useState(['제목1', '제목2', '제목3']);
+    
     const [pageCount, setPageCount] = useState(3); // 페이지 수 설정
     const [currentPage, setCurrentPage] = useState(0); // 현재 페이지 설정
 
@@ -38,7 +41,7 @@ export default function List() {
     return (
         <div className="list-container">
             <div className='freeboard'>
-                <h1 className='freeboard-title'>자유게시판</h1>
+                <h1 className='freeboard-title'>정보게시판</h1>
                 <div className='freeboard-header'>
                     <div className='search-container'>
                         <input
@@ -53,12 +56,16 @@ export default function List() {
                     <button className='write-botton' onClick={handleWhite}>글쓰기<div className='write-button-image' /></button>
                 </div>
                 <div className='freeboard-body'>
-                    {list.map((item, index) => (
-                        <div key={index} className='Listcomponent'>
-                            {item}
-                            <div>작성자 2024.6.28</div>
-                        </div>
+                {board_content_data.map((item, index) => (
+                        <Listcomponent 
+                            key={item.post_id}
+                            postTitle={item.title} 
+                            userName={item.user_name} 
+                            postTime={item.post_time} 
+                        />
                     ))}
+
+                    {/* 페이지네이션 */}
                     <div className='page-naviation'>
                         {pageCount > 0 && (
                             <Pagination
@@ -69,6 +76,18 @@ export default function List() {
                         )}
                     </div>
                 </div>
+            </div>
+        </div>
+    );
+}
+
+function Listcomponent({ postTitle, userName, postTime }) {
+    return (
+        <div className='Listcomponent'>
+            <div>{postTitle} </div>
+            <div className='name-time'>
+            <div>{userName}</div>
+            <div>{postTime}</div>
             </div>
         </div>
     );

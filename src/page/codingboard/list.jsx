@@ -1,6 +1,6 @@
 import List from '../../component/list';
 
-export default function FreeList() {
+export default function CodingList() {
     return (
         <List />
     )
