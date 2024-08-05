@@ -13,6 +13,8 @@ import FreeWrite from './page/freeboard/write';
 import InfoWrite from './page/infoboard/write';
 import CodingWrite from './page/codingboard/write';
 import GalleryWrite from './page/gallery/write';
+import Detail from './component/detail.jsx';
+
 
 
 import { LoginModal, RegisterModal } from './component/loginModal';
@@ -98,6 +100,7 @@ function AppComponent() {
           {/* 게시판 디테일 페이지 */}
           <Route path="/free/detail" element={<FreeDetail />} />
           <Route path="/info/detail" element={<InfoDetail />} />
+          <Route path="/info/detail/:postId" element={<Detail />} />
           <Route path="/coding/detail" element={<CodingDetail />} />
           {/* 게시판 글쓰기 페이지 */}
           <Route path="/free/write" element={<FreeWrite />} />
