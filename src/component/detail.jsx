@@ -56,7 +56,7 @@ export default function Detail() {
                 <p className='ListTitle'>자유게시판</p>
                 <div className="Container">
                     <div className='Header'>
-                        <div className='back'><img src={process.env.PUBLIC_URL + '/_-.png'} alt="write" /></div>
+                        <div className='back'><img src={process.env.PUBLIC_URL + '/jam_write.png'} alt="write" /></div>
                         <div className='info'>
                             <p className='title'>{post.title}</p>
                             <p className="write-info">
