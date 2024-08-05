@@ -14,4 +14,6 @@ export const user_data = {
     major: "전자전기컴퓨터공학부",
     email: "lyn091333@gmail.com",
     password: "12@3456"
+
 }
+

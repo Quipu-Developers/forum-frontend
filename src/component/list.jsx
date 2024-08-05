@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../style/list.css';
 import Pagination from './pagination';
-import {board_content_data} from '../data/board_post_data.tsx';
+import {board_post_data} from '../data/board_post_data.jsx';
+import Detail from './detail.jsx';
 
 export default function List() {
+    const navigate = useNavigate(); // useNavigate 호출
     const [index, setIndex] = useState(0);
     const [inputValue, setInputValue] = useState('');
     const [list, setList] = useState(['제목1', '제목2', '제목3']);
@@ -37,6 +40,10 @@ export default function List() {
         // 페이지 변경 시 필요한 로직 추가
     };
 
+    const handleDetailPage = (postId) => {
+        navigate(`/info/detail/${postId}`); // postId와 함께 Detail 페이지로 이동
+    };
+
     return (
         <div className="list-container">
             <div className='freeboard'>
@@ -55,12 +62,13 @@ export default function List() {
                     <button className='write-botton' onClick={handleWhite}>글쓰기<div className='write-button-image' /></button>
                 </div>
                 <div className='freeboard-body'>
-                {board_content_data.map((item, index) => (
+                {board_post_data.map((item, index) => (
                         <Listcomponent 
                             key={item.post_id}
                             postTitle={item.title} 
-                            userName={item.user_name} 
-                            postTime={item.post_time} 
+                            userName={item.user_name}
+                            postTime={item.post_time}
+                            onClick={() => handleDetailPage(item.post_id)}
                         />
                     ))}
 
@@ -80,9 +88,9 @@ export default function List() {
     );
 }
 
-function Listcomponent({ postTitle, userName, postTime }) {
+function Listcomponent({ postTitle, userName, postTime, onClick}) {
     return (
-        <div className='Listcomponent'>
+        <div className='Listcomponent' onClick={onClick}>
             <div>{postTitle} </div>
             <div className='name-time'>
             <div>{userName}</div>

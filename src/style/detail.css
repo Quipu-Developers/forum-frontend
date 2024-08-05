@@ -198,3 +198,21 @@
 .reply-input-container, .reply-container {
   margin-top: 10px;
 }
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; /* 전체 뷰포트 너비 */
+  height: 100vh; /* 전체 뷰포트 높이 */
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+  display: flex; /* flexbox 사용 */
+  justify-content: center; /* 수평 중앙 정렬 */
+  align-items: center; /* 수직 중앙 정렬 */
+  z-index: 1000; /* 다른 요소 위에 표시 */
+}
+
+.modal-content{
+  width: 70%;
+  height: 70%;
+}
