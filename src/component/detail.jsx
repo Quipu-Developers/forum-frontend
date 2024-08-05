@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import '../style/detail.css';
+import Profile from './profile.jsx';
 import { board_post_data } from '../data/board_post_data.jsx';
 import { board_comment_data } from '../data/board_comment_data.jsx';
 import { useParams } from 'react-router-dom'
+import { user_data } from '../data/user_data.jsx';
+
 
 export default function Detail() {
+
     const { postId } = useParams(); // URL에서 postId 가져옴
     const id = parseInt(postId); // 문자열을 숫자로 변환
 
@@ -103,16 +107,26 @@ export default function Detail() {
         </div>
     );
 }
+
 function Comment({ comment, handleReplySubmit }) {
     const [showReplyInput, setShowReplyInput] = useState(false);
     const [replyInput, setReplyInput] = useState('');
+    const [IsprofileOpen, setIsprofileOpen] = useState(false);
+
+    const openProfileModal = () => {
+        setIsprofileOpen(true);
+    };
+
+    const closeProfileModal = () => {
+        setIsprofileOpen(false);
+    };
 
     return (
         <>
             <div className="comment-container">
                 <div className='comment-header'>
                     <div className='profile'></div>
-                    <div className="author">{comment.writer}</div>
+                    <div className="author" onClick={() => { openProfileModal()}}>{comment.writer}</div>
                     <div className="reply" onClick={() => setShowReplyInput(!showReplyInput)}>대댓글</div>
                 </div>
                 <p className='comment'>{comment.text}</p>
@@ -151,6 +165,13 @@ function Comment({ comment, handleReplySubmit }) {
                     </div>
                 )}
             </div>
+            {IsprofileOpen && (
+                <div className="modal-overlay">
+                    <div className="modal-content">
+                        <Profile userId={comment.user_id} onClose={closeProfileModal} />
+                    </div>
+                </div>
+            )}
         </>
     );
 }
