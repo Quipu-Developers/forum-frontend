@@ -63,9 +63,9 @@ export default function List() {
                 </div>
                 <div className='freeboard-body'>
                 {board_post_data.map((item, index) => (
-                        <Listcomponent 
+                        <Listcomponent
                             key={item.post_id}
-                            postTitle={item.title} 
+                            postTitle={item.title}
                             userName={item.user_name}
                             postTime={item.post_time}
                             onClick={() => handleDetailPage(item.post_id)}

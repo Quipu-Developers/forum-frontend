@@ -112,9 +112,12 @@ function Comment({ comment, handleReplySubmit }) {
     const [showReplyInput, setShowReplyInput] = useState(false);
     const [replyInput, setReplyInput] = useState('');
     const [IsprofileOpen, setIsprofileOpen] = useState(false);
+    const [currentUserId, setCurrentUserId] = useState(null); // 현재 사용자 ID 상태 추가
 
-    const openProfileModal = () => {
+
+    const openProfileModal = (userId) => {
         setIsprofileOpen(true);
+        setCurrentUserId(userId); // 현재 댓글의 user_id를 저장
     };
 
     const closeProfileModal = () => {
@@ -126,7 +129,7 @@ function Comment({ comment, handleReplySubmit }) {
             <div className="comment-container">
                 <div className='comment-header'>
                     <div className='profile'></div>
-                    <div className="author" onClick={() => { openProfileModal()}}>{comment.writer}</div>
+                    <div className="author" onClick={() => { openProfileModal(comment.id) }}>{comment.writer}</div>
                     <div className="reply" onClick={() => setShowReplyInput(!showReplyInput)}>대댓글</div>
                 </div>
                 <p className='comment'>{comment.text}</p>
@@ -137,7 +140,7 @@ function Comment({ comment, handleReplySubmit }) {
                     <div className="reply-container" key={idx}>
                         <div className='comment-header'>
                             <div className='profile'></div>
-                            <div className="author">{reply.user_name}</div>
+                            <div className="author" onClick={() => { openProfileModal(reply.user_id) }}>{reply.user_name}</div>
                         </div>
                         <p className='replycomment'>{reply.comment}</p>
                     </div>
@@ -159,7 +162,7 @@ function Comment({ comment, handleReplySubmit }) {
                                 setReplyInput('');
                                 setShowReplyInput(false);
                             }
-                        }}>
+                        }} >
                             <img src={process.env.PUBLIC_URL + '/jam_write.png'} alt="write" />
                         </button>
                     </div>
@@ -168,7 +171,7 @@ function Comment({ comment, handleReplySubmit }) {
             {IsprofileOpen && (
                 <div className="modal-overlay">
                     <div className="modal-content">
-                        <Profile userId={comment.user_id} onClose={closeProfileModal} />
+                        <Profile userId={currentUserId} onClose={closeProfileModal} />
                     </div>
                 </div>
             )}
