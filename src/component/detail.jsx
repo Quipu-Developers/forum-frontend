@@ -21,15 +21,26 @@ export default function Detail() {
     let [commentInput, setCommentInput] = useState('');
 
     const handleReplySubmit = (commentId, replyText) => {
+        const newReply = {
+            comment_id: comments.length + 1, // 새로운 댓글 ID
+            parent_comment_id: commentId, // 부모 댓글 ID
+            post_id: id, // 게시글 ID
+            user_name: '작성자', // 작성자 이름
+            comment: replyText, // 대댓글 내용
+            replies: [] // 대댓글은 없으므로 빈 배열
+        };
+    
         let newComments = comments.map(comment => {
             if (comment.comment_id === commentId) {
-                return { ...comment, replies: [...comment.replies, { text: replyText, user_name: '작성자' }] };
+                // replies를 배열로 초기화
+                const updatedReplies = Array.isArray(comment.replies) ? comment.replies : [];
+                return { ...comment, replies: [...updatedReplies, newReply] }; // 대댓글 추가
             }
             return comment;
         });
         setComments(newComments);
     };
-
+    
     const handleCommentSubmit = () => {
         if (commentInput.trim() === '') {
             alert("댓글을 입력하세요.");
@@ -40,13 +51,13 @@ export default function Detail() {
                 post_id: id,
                 user_name: '작성자',
                 comment: commentInput,
-                replies: []
+                replies: [] // replies를 빈 배열로 초기화
             };
             setComments([newComment, ...comments]);
             setCommentInput('');
         }
     };
-
+    
     return (
         <div className='root'>
             <div className='full-detail'>
@@ -157,7 +168,8 @@ function Comment({ comment, handleReplySubmit }) {
                         <button className='comment-button' onClick={() => {
                             if (replyInput.trim() === '') {
                                 alert("대댓글을 입력하세요.");
-                            } else {
+                            } 
+                            else {
                                 handleReplySubmit(comment.id, replyInput);
                                 setReplyInput('');
                                 setShowReplyInput(false);
