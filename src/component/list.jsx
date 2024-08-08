@@ -25,7 +25,7 @@ export default function List() {
     }
 
     useEffect(() => {
-        const filterTitle = board_post_data.filter((item)=> { return item.title.toLowerCase().includes(userInput.toLowerCase())})
+        const filterTitle = board_post_data.filter((item)=> { return item.title.toLowerCase().trim().includes(userInput.toLowerCase().trim())})
         if (filterTitle !== null){
             setTitles(filterTitle)
         }

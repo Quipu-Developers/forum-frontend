@@ -78,5 +78,25 @@ export const board_post_data =
         order: 6,
         file: null,
         post_time: "2024.07.22 15:25"
+    },
+    {
+        post_id: 7,
+        board_type: "자유게시판",
+        user_name: "이예나",
+        user_id: 7,
+        title: "가나다라",
+        order: 7,
+        file: null,
+        post_time: "2024.07.22 15:24"
+    },
+    {
+        post_id: 8,
+        board_type: "자유게시판",
+        user_name: "이예나",
+        user_id: 8,
+        title: "가 나 다 라",
+        order: 8,
+        file: null,
+        post_time: "2024.07.22 15:24"
     }
 ]
