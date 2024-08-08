@@ -77,7 +77,7 @@ export default function List() {
                 {currentItems.map((item) => (
                         <Listcomponent 
                             key={item.post_id}
-                            postTitle={item.title} 
+                            postTitle={item.title}
                             userName={item.user_name}
                             postTime={item.post_time}
                             onClick={() => handleDetailPage(item.post_id)}
