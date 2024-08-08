@@ -7,10 +7,11 @@ import Detail from './detail.jsx';
 
 export default function List() {
     const navigate = useNavigate(); // useNavigate 호출
+    const itemsPerPage = 5; //한페이지 당 글 수
     const [index, setIndex] = useState(0);
     const [inputValue, setInputValue] = useState('');
     const [list, setList] = useState(['제목1', '제목2', '제목3']);
-    const [pageCount, setPageCount] = useState(3); // 페이지 수 설정
+    const pageCount = Math.ceil(board_post_data.length / itemsPerPage);  // 페이지 수 설정
     const [currentPage, setCurrentPage] = useState(0); // 현재 페이지 설정
 
     const handleInputChange = (event) => {
@@ -44,6 +45,11 @@ export default function List() {
         navigate(`/info/detail/${postId}`); // postId와 함께 Detail 페이지로 이동
     };
 
+    const currentItems = board_post_data.slice(
+        currentPage * itemsPerPage,
+        (currentPage + 1) * itemsPerPage
+    );
+
     return (
         <div className="list-container">
             <div className='freeboard'>
@@ -62,7 +68,7 @@ export default function List() {
                     <button className='write-botton' onClick={handleWhite}>글쓰기<div className='write-button-image' /></button>
                 </div>
                 <div className='freeboard-body'>
-                {board_post_data.map((item, index) => (
+                {currentItems.map((item) => (
                         <Listcomponent 
                             key={item.post_id}
                             postTitle={item.title} 
@@ -76,7 +82,7 @@ export default function List() {
                     <div className='page-naviation'>
                         {pageCount > 0 && (
                             <Pagination
-                                pageCount={Math.max(1, pageCount - 1)}
+                                pageCount={pageCount}
                                 onPageChange={handlePageChange}
                                 currentPage={currentPage}
                             />
