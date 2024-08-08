@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../style/list.css';
 import Pagination from './pagination';
@@ -14,24 +14,29 @@ export default function List() {
     const pageCount = Math.ceil(board_post_data.length / itemsPerPage);  // 페이지 수 설정
     const [currentPage, setCurrentPage] = useState(0); // 현재 페이지 설정
 
-    const handleInputChange = (event) => {
-        setInputValue(event.target.value);
-    };
+    const [userInput, setUserInput] = useState('');
+    const [titles, setTitles] = useState(board_post_data);
 
+    const onChange_UserInput = (event) => {
+        setUserInput(event.target.value);
+    };
+    
     const activeEnter = (event) => {
         if (event.key === 'Enter') {
-            setInputValue(event.target.value);
-            handleAddToList();
+            setUserInput(event.target.value);
         }
-
     }
 
-    const handleAddToList = () => {
-        if (inputValue.trim()) {
-            setList([...list, inputValue]);
-            setInputValue(''); // 입력란 초기화
+    useEffect(() => {
+        const filterTitle = board_post_data.filter((item)=> { return item.title.toLowerCase().includes(userInput.toLowerCase())})
+        if (filterTitle !== null){
+            setTitles(filterTitle)
         }
-    };
+        else{
+            setTitles(null)
+        }
+        console.log(titles)
+    },[userInput])
 
     const handleWhite = () => {
 
@@ -58,12 +63,13 @@ export default function List() {
                     <div className='search-container'>
                         <input
                             className='search-box'
+                            type="search"
                             placeholder='검색어를 입력하세요'
-                            value={inputValue}
-                            onChange={handleInputChange}
-                            onKeyDown={activeEnter}
+                            value={userInput}
+                            onChange = {onChange_UserInput}
+                            onKeyDown = {activeEnter}
                         />
-                        <button className='add-button' onClick={handleAddToList}></button>
+                        <button className='add-button' onClick={onChange_UserInput} ></button>
                     </div>
                     <button className='write-botton' onClick={handleWhite}>글쓰기<div className='write-button-image' /></button>
                 </div>
