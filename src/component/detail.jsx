@@ -21,15 +21,26 @@ export default function Detail() {
     let [commentInput, setCommentInput] = useState('');
 
     const handleReplySubmit = (commentId, replyText) => {
+        const newReply = {
+            comment_id: comments.length + 1, // 새로운 댓글 ID
+            parent_comment_id: commentId, // 부모 댓글 ID
+            post_id: id, // 게시글 ID
+            user_name: '작성자', // 작성자 이름
+            comment: replyText, // 대댓글 내용
+            replies: [] // 대댓글은 없으므로 빈 배열
+        };
+    
         let newComments = comments.map(comment => {
             if (comment.comment_id === commentId) {
-                return { ...comment, replies: [...comment.replies, { text: replyText, user_name: '작성자' }] };
+                // replies를 배열로 초기화
+                const updatedReplies = Array.isArray(comment.replies) ? comment.replies : [];
+                return { ...comment, replies: [...updatedReplies, newReply] }; // 대댓글 추가
             }
             return comment;
         });
         setComments(newComments);
     };
-
+    
     const handleCommentSubmit = () => {
         if (commentInput.trim() === '') {
             alert("댓글을 입력하세요.");
@@ -40,13 +51,13 @@ export default function Detail() {
                 post_id: id,
                 user_name: '작성자',
                 comment: commentInput,
-                replies: []
+                replies: [] // replies를 빈 배열로 초기화
             };
             setComments([newComment, ...comments]);
             setCommentInput('');
         }
     };
-
+    
     return (
         <div className='root'>
             <div className='full-detail'>
@@ -112,9 +123,12 @@ function Comment({ comment, handleReplySubmit }) {
     const [showReplyInput, setShowReplyInput] = useState(false);
     const [replyInput, setReplyInput] = useState('');
     const [IsprofileOpen, setIsprofileOpen] = useState(false);
+    const [currentUserId, setCurrentUserId] = useState(null); // 현재 사용자 ID 상태 추가
 
-    const openProfileModal = () => {
+
+    const openProfileModal = (userId) => {
         setIsprofileOpen(true);
+        setCurrentUserId(userId); // 현재 댓글의 user_id를 저장
     };
 
     const closeProfileModal = () => {
@@ -126,7 +140,7 @@ function Comment({ comment, handleReplySubmit }) {
             <div className="comment-container">
                 <div className='comment-header'>
                     <div className='profile'></div>
-                    <div className="author" onClick={() => { openProfileModal()}}>{comment.writer}</div>
+                    <div className="author" onClick={() => { openProfileModal(comment.id) }}>{comment.writer}</div>
                     <div className="reply" onClick={() => setShowReplyInput(!showReplyInput)}>대댓글</div>
                 </div>
                 <p className='comment'>{comment.text}</p>
@@ -137,7 +151,7 @@ function Comment({ comment, handleReplySubmit }) {
                     <div className="reply-container" key={idx}>
                         <div className='comment-header'>
                             <div className='profile'></div>
-                            <div className="author">{reply.user_name}</div>
+                            <div className="author" onClick={() => { openProfileModal(reply.user_id) }}>{reply.user_name}</div>
                         </div>
                         <p className='replycomment'>{reply.comment}</p>
                     </div>
@@ -154,12 +168,13 @@ function Comment({ comment, handleReplySubmit }) {
                         <button className='comment-button' onClick={() => {
                             if (replyInput.trim() === '') {
                                 alert("대댓글을 입력하세요.");
-                            } else {
+                            } 
+                            else {
                                 handleReplySubmit(comment.id, replyInput);
                                 setReplyInput('');
                                 setShowReplyInput(false);
                             }
-                        }}>
+                        }} >
                             <img src={process.env.PUBLIC_URL + '/jam_write.png'} alt="write" />
                         </button>
                     </div>
@@ -168,7 +183,7 @@ function Comment({ comment, handleReplySubmit }) {
             {IsprofileOpen && (
                 <div className="modal-overlay">
                     <div className="modal-content">
-                        <Profile userId={comment.user_id} onClose={closeProfileModal} />
+                        <Profile userId={currentUserId} onClose={closeProfileModal} />
                     </div>
                 </div>
             )}

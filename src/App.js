@@ -102,6 +102,7 @@ function AppComponent() {
           <Route path="/info/detail" element={<InfoDetail />} />
           <Route path="/info/detail/:postId" element={<Detail />} />
           <Route path="/coding/detail" element={<CodingDetail />} />
+          <Route path="/coding/detail/:postId" element={<Detail />} />
           {/* 게시판 글쓰기 페이지 */}
           <Route path="/free/write" element={<FreeWrite />} />
           <Route path="/info/write" element={<InfoWrite />} />

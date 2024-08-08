@@ -3,12 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import '../style/list.css';
 import Pagination from './pagination';
 import {board_post_data} from '../data/board_post_data.jsx';
-import Detail from './detail.jsx';
 
 export default function List() {
     const navigate = useNavigate(); // useNavigate 호출
-    const [index, setIndex] = useState(0);
-    const [pageCount, setPageCount] = useState(3); // 페이지 수 설정
+    const itemsPerPage = 5; //한페이지 당 글 수
+    const pageCount = Math.ceil(board_post_data.length / itemsPerPage);  // 페이지 수 설정
     const [currentPage, setCurrentPage] = useState(0); // 현재 페이지 설정
 
     const [userInput, setUserInput] = useState('');
@@ -35,8 +34,8 @@ export default function List() {
         console.log(titles)
     },[userInput])
 
-    const handleWhite = () => {
-
+    const handleWrite = () => {
+        navigate('/info/write')
     }
     const handlePageChange = ({ selected }) => {
         setCurrentPage(selected);
@@ -46,6 +45,11 @@ export default function List() {
     const handleDetailPage = (postId) => {
         navigate(`/info/detail/${postId}`); // postId와 함께 Detail 페이지로 이동
     };
+
+    const currentItems = titles.slice(
+        currentPage * itemsPerPage,
+        (currentPage + 1) * itemsPerPage
+    );
 
     return (
         <div className="list-container">
@@ -63,13 +67,13 @@ export default function List() {
                         />
                         <button className='add-button' onClick={onChange_UserInput} ></button>
                     </div>
-                    <button className='write-botton' onClick={handleWhite}>글쓰기<div className='write-button-image' /></button>
+                    <button className='write-botton' onClick={handleWrite}>글쓰기<div className='write-button-image' /></button>
                 </div>
                 <div className='freeboard-body'>
-                {titles.map((item, index) => (
+                {currentItems.map((item) => (
                         <Listcomponent 
                             key={item.post_id}
-                            postTitle={item.title} 
+                            postTitle={item.title}
                             userName={item.user_name}
                             postTime={item.post_time}
                             onClick={() => handleDetailPage(item.post_id)}
@@ -80,7 +84,7 @@ export default function List() {
                     <div className='page-naviation'>
                         {pageCount > 0 && (
                             <Pagination
-                                pageCount={Math.max(1, pageCount - 1)}
+                                pageCount={pageCount}
                                 onPageChange={handlePageChange}
                                 currentPage={currentPage}
                             />

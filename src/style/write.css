@@ -1,0 +1,85 @@
+.write-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.write-input-container{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 1078px;
+  margin-bottom: 20px;
+}
+.write-input{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-bottom: 20px;
+  border: solid 1px #4E6B8B;
+  border-radius: 3px;
+  background-color:#E8F0FFEE;
+}
+.write-title{
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 37.65px;
+  color: #4E6B8B;
+}
+.write-input-title{
+  width : 75%;
+  color :#4E6B8B;
+  font-size: large;
+  font-weight: 500;
+  border: solid 1px #4E6B8B;
+  border-radius: 3px;
+  margin : 0px 15px 15px 15px;
+}
+.write-input-body{
+  margin : 0px 15px 15px 15px;
+}
+.write-input-file{
+  margin : 5px 15px 5px 15px;
+}
+.write-enroll{
+  align-self: flex-end;
+  margin-right: 15px;
+  margin-bottom: 10px;
+}
+b {
+  font-weight : 580;
+  font-size : large;
+  color: #4E6B8B;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  margin-left: 15px;
+}
+input {
+  text-indent: 5px;
+  line-height: 2;
+}
+input::placeholder{
+  font-family :initial;
+  color: #4E6B8B;
+  font-weight: 500;
+}
+textarea {
+  display: flex;
+  flex-grow: 1;
+  overflow: hidden;
+  font-size: large;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-indent: 5px;
+  line-height: 2;
+  color :#4E6B8B;
+  border: solid 1px #4E6B8B;
+  border-radius: 3px;
+  resize: none;
+}
+textarea::placeholder{
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: large;
+  color: #4E6B8B;
+  font-weight: 500;
+}
