@@ -27,6 +27,15 @@
   line-height: 37.65px;
   color: #4E6B8B;
 }
+.write-code{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.write-code-button{
+  height: 40px;
+  margin-right: 45px;
+}
 .write-input-title{
   width : 75%;
   color :#4E6B8B;
@@ -67,7 +76,6 @@ input::placeholder{
 textarea {
   display: flex;
   flex-grow: 1;
-  overflow: hidden;
   font-size: large;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   text-indent: 5px;

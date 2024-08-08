@@ -23,6 +23,10 @@ export default function Write() {
 
     }
 
+    const handleAddCode = (e) => {
+
+    }
+
     return (
         <div className='write-container'>
             <div className='write-input-container'>
@@ -31,18 +35,27 @@ export default function Write() {
                 </h1>
                 <div className='write-input'>
                     <b>제목</b>
-                    <input 
-                        className='write-input-title' 
-                        type='text' placeholder='제목을 입력하세요' 
-                        value={title} 
-                        onChange={ (e) => setTitle(e.target.value) } 
-                    />
+                    <div className='write-code'>
+                        <input 
+                            className='write-input-title' 
+                            type='text' placeholder='제목을 입력하세요' 
+                            value={title} 
+                            onChange={ (e) => setTitle(e.target.value) } 
+                        />
+                        <button
+                            className='write-code-button'
+                            type='button'
+                            onClick={handleAddCode}
+                        >
+                            코드 첨부
+                        </button>
+                    </div>
                     <b>내용</b>
                     <textarea 
                         className='write-input-body' 
                         placeholder='내용을 입력하세요' 
                         value={body} ref={bodyRef} 
-                        onChange={(e) => {setBody(e.target.value); handleResizeHeight(e.target.value);} } 
+                        onChange={(e) => {setBody(e.target.value);} } 
                     />
                     <b>파일첨부</b>
                     <input 
