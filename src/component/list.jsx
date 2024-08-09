@@ -3,14 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import '../style/list.css';
 import Pagination from './pagination';
 import {board_post_data} from '../data/board_post_data.jsx';
-import Detail from './detail.jsx';
 
 export default function List() {
     const navigate = useNavigate(); // useNavigate 호출
     const itemsPerPage = 5; //한페이지 당 글 수
-    const [index, setIndex] = useState(0);
-    const [inputValue, setInputValue] = useState('');
-    const [list, setList] = useState(['제목1', '제목2', '제목3']);
     const pageCount = Math.ceil(board_post_data.length / itemsPerPage);  // 페이지 수 설정
     const [currentPage, setCurrentPage] = useState(0); // 현재 페이지 설정
 
@@ -28,7 +24,7 @@ export default function List() {
     }
 
     useEffect(() => {
-        const filterTitle = board_post_data.filter((item)=> { return item.title.toLowerCase().includes(userInput.toLowerCase())})
+        const filterTitle = board_post_data.filter((item)=> { return item.title.toLowerCase().trim().includes(userInput.toLowerCase().trim())})
         if (filterTitle !== null){
             setTitles(filterTitle)
         }
@@ -38,8 +34,8 @@ export default function List() {
         console.log(titles)
     },[userInput])
 
-    const handleWhite = () => {
-
+    const handleWrite = () => {
+        navigate('/info/write')
     }
     const handlePageChange = ({ selected }) => {
         setCurrentPage(selected);
@@ -50,7 +46,7 @@ export default function List() {
         navigate(`/info/detail/${postId}`); // postId와 함께 Detail 페이지로 이동
     };
 
-    const currentItems = board_post_data.slice(
+    const currentItems = titles.slice(
         currentPage * itemsPerPage,
         (currentPage + 1) * itemsPerPage
     );
@@ -71,7 +67,7 @@ export default function List() {
                         />
                         <button className='add-button' onClick={onChange_UserInput} ></button>
                     </div>
-                    <button className='write-botton' onClick={handleWhite}>글쓰기<div className='write-button-image' /></button>
+                    <button className='write-botton' onClick={handleWrite}>글쓰기<div className='write-button-image' /></button>
                 </div>
                 <div className='freeboard-body'>
                 {currentItems.map((item) => (
