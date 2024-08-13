@@ -2,44 +2,42 @@ import React, { useState } from 'react';
 import '../style/detail.css';
 import Profile from './profile.jsx';
 import { board_post_data } from '../data/board_post_data.jsx';
-import { board_comment_data } from '../data/board_comment_data.jsx';
 import { useParams } from 'react-router-dom'
-import { user_data } from '../data/user_data.jsx';
-
+import { useLocation } from 'react-router-dom';
 
 export default function Detail( ) {
-
-
-    const { postId, boardType } = useParams(); // postId와 boardType을 가져옴
-    const id = parseInt(postId); // 문자열을 숫자로 변환
-
-    if (boardType==='자유게시판'){
-
-    }
-
+    const location = useLocation();
+    const { board_comment_data = [] } = location.state || {}; // 수정된 부분
+    const { postId, boardType } = useParams();
+    const id = parseInt(postId);
+    
     // postId에 해당하는 모든 댓글을 가져옴
     const comment_datas = board_comment_data.filter(item => item.post_id === id);
     // postId에 해당하는 게시글을 가져옴
-    const post = board_post_data.find(item => item.post_id === id);
-
-    let [comments, setComments] = useState(comment_datas); // comment_datas를 초기 상태로 사용
+    const post = board_post_data ? board_post_data.find(item => item.post_id === id) : null; // 수정된 부분
+    let [comments, setComments] = useState(comment_datas); 
     let [commentInput, setCommentInput] = useState('');
+    const [userName, setUserName] = useState('현재 로그인한 사용자 이름'); // 현재 로그인한 사용자
+
+    if (!post) {
+        return <p>해당 게시글을 찾을 수 없습니다.</p>; // 추가된 부분
+    }
+
 
     const handleReplySubmit = (commentId, replyText) => {
         const newReply = {
-            comment_id: comments.length + 1, // 새로운 댓글 ID
-            parent_comment_id: commentId, // 부모 댓글 ID
-            post_id: id, // 게시글 ID
-            user_name: comments.user_name, // 작성자 이름
-            comment: replyText, // 대댓글 내용
-            replies: [] // 대댓글은 없으므로 빈 배열
+            comment_id: comments.length + 1,
+            parent_comment_id: commentId,
+            post_id: id,
+            user_name: userName, // 수정된 부분
+            comment: replyText,
+            replies: []
         };
-    
+
         let newComments = comments.map(comment => {
             if (comment.comment_id === commentId) {
-                // replies를 배열로 초기화
                 const updatedReplies = Array.isArray(comment.replies) ? comment.replies : [];
-                return { ...comment, replies: [...updatedReplies, newReply] }; // 대댓글 추가
+                return { ...comment, replies: [...updatedReplies, newReply] };
             }
             return comment;
         });
@@ -54,7 +52,7 @@ export default function Detail( ) {
                 comment_id: comments.length + 1,
                 parent_comment_id: -1,
                 post_id: id,
-                user_name: comments.user_name,
+                user_name: userName, // 수정된 부분,
                 comment: commentInput,
                 replies: [] // replies를 빈 배열로 초기화
             };

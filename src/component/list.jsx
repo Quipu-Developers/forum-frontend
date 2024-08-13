@@ -38,8 +38,12 @@ export default function List({boardType}) {
         setCurrentPage(selected);
         // 페이지 변경 시 필요한 로직 추가
     };
-
     const handleDetailPage = (postId) => {
+        // board_comment_data에서 boardType과 postId에 맞는 댓글 데이터를 필터링
+        const chosen_comment_data = board_comment_data.filter(comment =>
+            comment.board_type === boardType && comment.post_id === postId
+        );
+    
         let path;
         switch(boardType) {
             case '자유게시판':
@@ -57,7 +61,9 @@ export default function List({boardType}) {
             default:
                 path = `/`; // 기본 경로 설정
         }
-        navigate(path);
+    
+        // Detail 페이지로 이동하며 chosen_comment_data를 전달
+        navigate(path, { state: { chosen_comment_data } });
     };
     
 
@@ -91,7 +97,7 @@ export default function List({boardType}) {
                         postTitle={item.title}
                         userName={item.user_name}
                         postTime={item.post_time}
-                        onClick={() => handleDetailPage(item.post_id)} // board_type 제거
+                        onClick={() => handleDetailPage(item.post_id)}
                     />
                     ))}
 
