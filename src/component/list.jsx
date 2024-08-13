@@ -64,6 +64,8 @@ export default function List({boardType}) {
     
         // Detail 페이지로 이동하며 chosen_comment_data를 전달
         navigate(path, { state: { chosen_comment_data } });
+        console.log(chosen_comment_data); // 필터링된 댓글 데이터 확인
+
     };
     
 
