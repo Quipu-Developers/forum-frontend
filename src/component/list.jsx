@@ -40,8 +40,26 @@ export default function List({boardType}) {
     };
 
     const handleDetailPage = (postId) => {
-        navigate(`/${boardType}/detail/${postId}`);
+        let path;
+        switch(boardType) {
+            case '자유게시판':
+                path = `/free/detail/${postId}`;
+                break;
+            case '정보게시판':
+                path = `/info/detail/${postId}`;
+                break;
+            case '코딩게시판':
+                path = `/coding/detail/${postId}`;
+                break;
+            case 'gallery':
+                path = `/gallery/detail/${postId}`;
+                break;
+            default:
+                path = `/`; // 기본 경로 설정
+        }
+        navigate(path);
     };
+    
 
     const currentItems = titles.slice(
         currentPage * itemsPerPage,
