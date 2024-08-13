@@ -39,6 +39,8 @@ export default function List({boardType}) {
         // 페이지 변경 시 필요한 로직 추가
     };
     const handleDetailPage = (postId) => {
+        const post = board_post_data ? board_post_data.find(item => item.post_id === postId) : null; // 수정된 부분
+
         // board_comment_data에서 boardType과 postId에 맞는 댓글 데이터를 필터링
         const chosen_comment_data = board_comment_data.filter(comment =>
             comment.board_type === boardType && comment.post_id === postId
@@ -62,9 +64,8 @@ export default function List({boardType}) {
                 path = `/`; // 기본 경로 설정
         }
     
-        // Detail 페이지로 이동하며 chosen_comment_data를 전달
-        navigate(path, { state: { chosen_comment_data } });
-        console.log(chosen_comment_data); // 필터링된 댓글 데이터 확인
+        // Detail 페이지로 이동하며 chosen_comment_data, post를 전달
+        navigate(path, { state: { chosen_comment_data, post } });
 
     };
     

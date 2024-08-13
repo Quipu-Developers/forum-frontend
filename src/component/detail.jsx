@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import '../style/detail.css';
 import Profile from './profile.jsx';
-import { board_post_data } from '../data/board_post_data.jsx';
 import { useParams } from 'react-router-dom'
 import { useLocation } from 'react-router-dom';
 
 export default function Detail( ) {
     const location = useLocation();
     const board_comment_data = location.state?.chosen_comment_data || []; // 기본값 설정
-    const { postId, boardType } = useParams();
+    const { postId } = useParams(); // postId를 URL 파라미터에서 가져옴
     const id = parseInt(postId);
-    console.log(board_comment_data); // 데이터 확인
+
 
     // postId에 해당하는 모든 댓글을 가져옴
     const comment_datas = board_comment_data.filter(item => item.post_id === id);
-    // postId에 해당하는 게시글을 가져옴
-    const post = board_post_data ? board_post_data.find(item => item.post_id === id) : null; // 수정된 부분
-    let [comments, setComments] = useState(comment_datas);
+    // List 컴포넌트에서 전달된 게시글
+    const post = location.state?.post;
+
+    let [comments, setComments] = useState(comment_datas);      // 댓글 목록
     let [commentInput, setCommentInput] = useState('');
     const [userName, setUserName] = useState('현재 로그인한 사용자 이름'); // 현재 로그인한 사용자
 
