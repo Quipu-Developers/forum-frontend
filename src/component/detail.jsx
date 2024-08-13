@@ -7,10 +7,15 @@ import { useParams } from 'react-router-dom'
 import { user_data } from '../data/user_data.jsx';
 
 
-export default function Detail() {
+export default function Detail( ) {
 
-    const { postId } = useParams(); // URL에서 postId 가져옴
+
+    const { postId, boardType } = useParams(); // postId와 boardType을 가져옴
     const id = parseInt(postId); // 문자열을 숫자로 변환
+
+    if (boardType==='자유게시판'){
+
+    }
 
     // postId에 해당하는 모든 댓글을 가져옴
     const comment_datas = board_comment_data.filter(item => item.post_id === id);
@@ -25,7 +30,7 @@ export default function Detail() {
             comment_id: comments.length + 1, // 새로운 댓글 ID
             parent_comment_id: commentId, // 부모 댓글 ID
             post_id: id, // 게시글 ID
-            user_name: '작성자', // 작성자 이름
+            user_name: comments.user_name, // 작성자 이름
             comment: replyText, // 대댓글 내용
             replies: [] // 대댓글은 없으므로 빈 배열
         };
@@ -49,7 +54,7 @@ export default function Detail() {
                 comment_id: comments.length + 1,
                 parent_comment_id: -1,
                 post_id: id,
-                user_name: '작성자',
+                user_name: comments.user_name,
                 comment: commentInput,
                 replies: [] // replies를 빈 배열로 초기화
             };
