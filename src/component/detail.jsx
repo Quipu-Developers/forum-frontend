@@ -1,44 +1,46 @@
 import React, { useState } from 'react';
 import '../style/detail.css';
 import Profile from './profile.jsx';
-import { board_post_data } from '../data/board_post_data.jsx';
-import { board_comment_data } from '../data/board_comment_data.jsx';
 import { useParams } from 'react-router-dom'
-import { user_data } from '../data/user_data.jsx';
-
+import { useLocation } from 'react-router-dom';
 
 export default function Detail() {
+    const location = useLocation();
+    const chosen_comment_data = location.state?.chosen_comment_data || [];
+    const { postId } = useParams();
+    const post_id = parseInt(postId);
 
-    const { postId } = useParams(); // URL에서 postId 가져옴
-    const id = parseInt(postId); // 문자열을 숫자로 변환
-
-    // postId에 해당하는 모든 댓글을 가져옴
-    const comment_datas = board_comment_data.filter(item => item.post_id === id);
-    // postId에 해당하는 게시글을 가져옴
-    const post = board_post_data.find(item => item.post_id === id);
-
-    let [comments, setComments] = useState(comment_datas); // comment_datas를 초기 상태로 사용
+    const [commentIdLength, setCommentIdLength] = useState(location.state?.comment_id_length || 0);
+    const comment_id_length = location.state?.comment_id_length;
+    
+    const post = location.state?.chosen_post_data;
+    let [comments, setComments] = useState(chosen_comment_data);
     let [commentInput, setCommentInput] = useState('');
+    const [userName, setUserName] = useState('현재 로그인한 사용자 이름'); // 실제 로그인 사용자 이름으로 변경
+
+    if (!post) {
+        return <p>해당 게시글을 찾을 수 없습니다.</p>;
+    }
 
     const handleReplySubmit = (commentId, replyText) => {
         const newReply = {
-            comment_id: comments.length + 1, // 새로운 댓글 ID
-            parent_comment_id: commentId, // 부모 댓글 ID
-            post_id: id, // 게시글 ID
-            user_name: '작성자', // 작성자 이름
-            comment: replyText, // 대댓글 내용
-            replies: [] // 대댓글은 없으므로 빈 배열
+            comment_id: commentIdLength + 1,
+            parent_comment_id: commentId,
+            post_id: post_id,
+            user_name: userName, // 현재 로그인한 사용자 이름으로 변경
+            comment: replyText,
+            replies: []
         };
-    
+
         let newComments = comments.map(comment => {
             if (comment.comment_id === commentId) {
-                // replies를 배열로 초기화
                 const updatedReplies = Array.isArray(comment.replies) ? comment.replies : [];
-                return { ...comment, replies: [...updatedReplies, newReply] }; // 대댓글 추가
+                return { ...comment, replies: [...updatedReplies, newReply] };
             }
             return comment;
         });
         setComments(newComments);
+        setCommentIdLength(commentIdLength + 1); // ID 증가
     };
     
     const handleCommentSubmit = () => {
@@ -46,15 +48,16 @@ export default function Detail() {
             alert("댓글을 입력하세요.");
         } else {
             let newComment = {
-                comment_id: comments.length + 1,
+                comment_id: commentIdLength + 1,
                 parent_comment_id: -1,
-                post_id: id,
-                user_name: '작성자',
+                post_id: post_id,
+                user_name: userName, // 현재 로그인한 사용자 이름
                 comment: commentInput,
-                replies: [] // replies를 빈 배열로 초기화
+                replies: []
             };
             setComments([newComment, ...comments]);
             setCommentInput('');
+            setCommentIdLength(commentIdLength + 1); // ID 증가
         }
     };
     
@@ -77,13 +80,13 @@ export default function Detail() {
                         </div>
                     </div>
                     <div className='Content'>
-                        <p className='content'>내용</p>
+                        <p className='content'>{post.content || '게시글 내용이 없습니다.'}</p>
                     </div>
                     <div className='comment-section'>
                         <div className='input-container'>
                             <input
                                 className='input-box'
-                                onChange={(e) => { setCommentInput(e.target.value); }}
+                                onChange={(e) => setCommentInput(e.target.value)}
                                 value={commentInput}
                                 placeholder="댓글을 입력하세요."
                             />
@@ -95,7 +98,7 @@ export default function Detail() {
                         <div className='comment-list'>
                             {comments.length > 0 ? (
                                 comments
-                                    .filter(comment => comment.parent_comment_id === -1) // parent_comment_id가 -1인 것만 필터링
+                                    .filter(comment => comment.parent_comment_id === -1)
                                     .map((comment) => (
                                         <Comment
                                             key={comment.comment_id}
@@ -103,7 +106,7 @@ export default function Detail() {
                                                 id: comment.comment_id,
                                                 writer: comment.user_name,
                                                 text: comment.comment,
-                                                replies: comments.filter(reply => reply.parent_comment_id === comment.comment_id) // 해당 댓글의 대댓글 필터링
+                                                replies: comments.filter(reply => reply.parent_comment_id === comment.comment_id)
                                             }}
                                             handleReplySubmit={handleReplySubmit}
                                         />
@@ -118,6 +121,7 @@ export default function Detail() {
         </div>
     );
 }
+
 
 function Comment({ comment, handleReplySubmit }) {
     const [showReplyInput, setShowReplyInput] = useState(false);
@@ -170,7 +174,7 @@ function Comment({ comment, handleReplySubmit }) {
                                 alert("대댓글을 입력하세요.");
                             } 
                             else {
-                                handleReplySubmit(comment.id, replyInput);
+                                handleReplySubmit(comment.id, replyInput); // Detail 컴포넌트의 핸들러 호출
                                 setReplyInput('');
                                 setShowReplyInput(false);
                             }

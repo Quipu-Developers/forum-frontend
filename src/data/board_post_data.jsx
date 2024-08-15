@@ -98,5 +98,15 @@ export const board_post_data =
         order: 8,
         file: null,
         post_time: "2024.07.22 15:24"
+    },
+    {
+        post_id: 9,
+        board_type: "코딩게시판",
+        user_name: "이예나",
+        user_id: 8,
+        title: "가 나 다 라",
+        order: 8,
+        file: null,
+        post_time: "2024.07.22 15:24"
     }
 ]

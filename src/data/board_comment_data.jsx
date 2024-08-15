@@ -57,4 +57,28 @@ export const board_comment_data =
         file: null,
         post_time: "2024.07.22 15:40"
     },
+    {
+        comment_id: 4,
+        parent_comment_id: -1, // 제일 부모 댓글일 때
+        post_id: 4,
+        board_type: "정보게시판",
+        user_name: "이제민",
+        user_id: 2,
+        comment: "첫번째 댓글",
+        order: 1,
+        file: null,
+        post_time: "2024.07.22 15:40"
+    },
+    {
+        comment_id: 5,
+        parent_comment_id: -1, // 제일 부모 댓글일 때
+        post_id: 9,
+        board_type: "코딩게시판",
+        user_name: "이제민",
+        user_id: 2,
+        comment: "첫번째 댓글",
+        order: 1,
+        file: null,
+        post_time: "2024.07.22 15:40"
+    },
 ]
