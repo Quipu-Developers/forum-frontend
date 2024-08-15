@@ -5,89 +5,130 @@
   flex-direction: column;
   align-items: center;
 }
-.write-input-container{
+
+.write-input-container {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  width: 1078px;
+  width: 90%;
   margin-bottom: 20px;
 }
-.write-input{
+
+.write-input {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
   margin-bottom: 20px;
   border: solid 1px #4E6B8B;
-  border-radius: 3px;
-  background-color:#E8F0FFEE;
+  background-color: #F6F9FF;
+  padding: 15px; 
 }
-.write-title{
+
+.write-title {
   font-size: 20px;
   font-weight: bold;
-  line-height: 37.65px;
   color: #4E6B8B;
 }
-.write-code{
+
+.write-code {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  align-items: row;
+  margin-bottom: 15px;
 }
-.write-code-button{
+
+.write-code-button {
   height: 40px;
-  margin-right: 45px;
+  width: 10%;
+  margin-right: 20px;
+  background-color: #8EACCD;
+  color: white;
+  border: 1px solid #53759B;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-left: 2%;
 }
-.write-input-title{
-  width : 75%;
-  color :#4E6B8B;
-  font-size: large;
-  font-weight: 500;
+
+.write-code-button:hover {
+  background-color: #afc3db;
+}
+
+.write-input-title {
+  width: 75%;
+  color: #4E6B8B;
   border: solid 1px #4E6B8B;
-  border-radius: 3px;
-  margin : 0px 15px 15px 15px;
 }
-.write-input-body{
-  margin : 0px 15px 15px 15px;
+
+.write-input-body {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 1%;
+  padding: 10px;
+  border-radius: 0px;
 }
-.write-input-file{
-  margin : 5px 15px 5px 15px;
+
+.write-code-input {
+  width: 100%;
+  margin-top: 1%;
+  padding: 10px;
+  background-color: #D2DBE6;
+  border: 1px solid #53759B;
+  border-radius: 0px;
+  color: #333;
 }
-.write-enroll{
-  align-self: flex-end;
-  margin-right: 15px;
-  margin-bottom: 10px;
+
+.write-input-file {
+  margin-top: 1%;
+  font-size: 15px;
 }
+
+.write-action-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.write-enroll-button,
+.write-cancel-button {
+  padding: 10px 20px;
+  margin-left: 10px;
+  background-color: #F9F3CC;
+  color: #2F4E71;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.write-cancel-button {
+  background-color: #F9F3CC;
+}
+
+.write-enroll-button:hover {
+  background-color: #c4bc8e;
+}
+
+.write-cancel-button:hover {
+  background-color: #c4bc8e;
+}
+
 b {
-  font-weight : 580;
-  font-size : large;
+  font-weight: 580;
+  font-size: large;
   color: #4E6B8B;
   margin-top: 15px;
   margin-bottom: 5px;
-  margin-left: 15px;
 }
-input {
-  text-indent: 5px;
-  line-height: 2;
-}
-input::placeholder{
-  font-family :initial;
-  color: #4E6B8B;
-  font-weight: 500;
-}
+
+input,
 textarea {
-  display: flex;
-  flex-grow: 1;
-  font-size: large;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   text-indent: 5px;
   line-height: 2;
-  color :#4E6B8B;
+  font-size: large;
+  color: #4E6B8B;
   border: solid 1px #4E6B8B;
   border-radius: 3px;
   resize: none;
 }
-textarea::placeholder{
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: large;
+
+input::placeholder,
+textarea::placeholder {
   color: #4E6B8B;
   font-weight: 500;
 }
