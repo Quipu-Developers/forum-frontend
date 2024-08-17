@@ -98,10 +98,10 @@ function AppComponent() {
           <Route path="/coding" element={<CodingList />} />
           <Route path="/gallery" element={<GalleryList />} />
           {/* 게시판 디테일 페이지 */}
-          <Route path="/free/detail/?postId=:postId" element={<FreeDetail />} />
-          <Route path="/info/detail/?postId=:postId" element={<InfoDetail />} />
-          <Route path="/coding/detail/?postId=:postId" element={<CodingDetail />} />
-          <Route path="/gallery/detail/?postId=:postId" element={<GalleryList />} />
+          <Route path="/free/detail/:postId" element={<FreeDetail />} />
+          <Route path="/info/detail/:postId" element={<InfoDetail />} />
+          <Route path="/coding/detail/:postId" element={<CodingDetail />} />
+          <Route path="/gallery/detail/:postId" element={<GalleryList />} />
 
           {/* 게시판 글쓰기 페이지 */}
           <Route path="/free/write" element={<FreeWrite />} />
@@ -110,7 +110,6 @@ function AppComponent() {
           <Route path="/gallery/write" element={<GalleryWrite />} />
         </Routes>
       </div>
-
     </div>
   );
 }
