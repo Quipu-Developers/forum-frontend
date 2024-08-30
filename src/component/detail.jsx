@@ -65,9 +65,9 @@ export default function Detail( ) {
     return (
         <div className='root'>
             <div className='full-detail'>
-                <div>
+                {/* <div>
                     <h1>Detail Page</h1>
-                </div>
+                </div> */}
                 <p className='ListTitle'>자유게시판</p>
                 <div className="Container">
                     <div className='Header'>
@@ -80,9 +80,9 @@ export default function Detail( ) {
                             </p>
                         </div>
                     </div>
-                    <div className='Content'>
+                    {/* <div className='Content'>
                         <p className='content'>내용</p>
-                    </div>
+                    </div> */}
                     <div className='comment-section'>
                         <div className='input-container'>
                             <input
